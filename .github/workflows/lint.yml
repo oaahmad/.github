@@ -1,0 +1,40 @@
+name: lint
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+  pull_request:
+    types: [opened, edited, ready_for_review, review_requested]
+  pull_request_review:
+    types: [submitted, edited]
+  schedule:
+    # Every two months on the 1st at midnight (UTC)
+    - cron: '0 0 1 */2 *'
+
+jobs:
+  build:
+    name: Lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check-out repository
+        uses: actions/checkout@v2
+        with:
+          # Latest commit only (use 0 for all)
+          fetch-depth: 1
+          # Whether to download Git-LFS files
+          lfs: false
+          # Whether to checkout submodules (use "recursive" for all)
+          submodules: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+
+      - name: Run setup
+        run: make setup
+
+      - name: Run lint
+        run: make lint

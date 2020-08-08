@@ -1,0 +1,113 @@
+# Use LF line endings for all text (non-binary) files
+* text eol=lf
+# Use CRLF line endings for batch scripts
+*.bat text eol=crlf
+*.cmd text eol=crlf
+# Use CRLF line endings for PowerShell scripts
+*.ps1 text eol=crlf
+
+# Mark files as binary:
+
+# Archives
+*.7z binary
+*.bak binary
+*.br binary
+*.bz2 binary
+*.gz binary
+*.lz binary
+*.lzma binary
+*.lzo binary
+*.ori binary
+*.orig binary
+*.rar binary
+*.rz binary
+*.sz binary
+*.tar binary
+*.xz binary
+*.z binary
+*.Z binary
+*.zip binary
+
+# Audio and video
+*.3g2 binary
+*.3gp binary
+*.3gp2 binary
+*.3gpp binary
+*.3gpp2 binary
+*.aac binary
+*.aif binary
+*.asf binary
+*.au binary
+*.avchd binary
+*.avi binary
+*.f4a binary
+*.f4b binary
+*.f4v binary
+*.flac binary
+*.flv binary
+*.m4a binary
+*.m4b binary
+*.m4r binary
+*.m4v binary
+*.mkv binary
+*.mov binary
+*.mp3 binary
+*.mp4 binary
+*.oga binary
+*.ogg binary
+*.ogv binary
+*.ogx binary
+*.pcm binary
+*.swf binary
+*.vob binary
+*.wav binary
+*.webm binary
+*.wma binary
+*.wmv binary
+
+# Documents
+*.doc binary
+*.docx binary
+*.fodt binary
+*.odt binary
+*.pdf binary
+*.uot binary
+
+# Fonts
+*.otc binary
+*.otf binary
+*.tte binary
+*.ttf binary
+*.woff binary
+*.woff2 binary
+
+# Images
+*.3dm binary
+*.apng binary
+*.avif binary
+*.avifs binary
+*.bmp binary
+*.caf binary
+*.cur binary
+*.dib binary
+*.gif binary
+*.ico binary
+*.jfif binary
+*.jpeg binary
+*.jpg binary
+*.max binary
+*.mng binary
+*.pjp binary
+*.pjpeg binary
+*.png binary
+*.psd binary
+*.raw binary
+*.tif binary
+*.tiff binary
+*.webp binary
+*.xbm binary
+
+# Other
+*.app binary
+*.exe binary
+*.out binary

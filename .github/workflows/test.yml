@@ -1,0 +1,44 @@
+name: test
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+  pull_request:
+    types: [opened, edited, closed, reopened, ready_for_review, review_requested]
+  pull_request_review:
+    types: [submitted, edited]
+  release:
+  schedule:
+    # Every 1st of the month at midnight (UTC)
+    - cron: '0 0 1 * *'
+
+jobs:
+  build:
+    name: Tests
+    runs-on: ${{matrix.os}}
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    steps:
+      - name: Check-out repository
+        uses: actions/checkout@v2
+        with:
+          # Latest commit only (use 0 for all)
+          fetch-depth: 1
+          # Whether to download Git-LFS files
+          lfs: false
+          # Whether to checkout submodules (use "recursive" for all)
+          submodules: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+
+      - name: Run setup
+        run: make setup
+
+      - name: Run tests
+        run: make test

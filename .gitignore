@@ -1,0 +1,44 @@
+# Note: This file may be regenerated (modify "src/config/" instead)
+
+# Ignore everything
+*
+# Allow folders (to allow files within folders)
+!/**/
+
+# Only allow folders matching this glob
+*/
+![a-zA-Z]*[a-zA-Z]/
+
+# Allow these directories
+!/.github/
+
+# Ignore these directories
+/build/
+/builds/
+/data/
+/settings/
+log/
+logs/
+node_modules/
+temp/
+temporary/
+tmp/
+
+# Allow files matching the following globs with the following extensions
+![a-zA-Z]*[a-zA-Z].md
+![a-zA-Z]*[a-zA-Z].txt
+![a-zA-Z]*[a-zA-Z].sh
+![a-zA-Z]*[a-zA-Z].py
+![a-zA-Z]*[a-zA-Z].toml
+![a-zA-Z]*[a-zA-Z].yml
+
+# Allow these files
+!.editorconfig
+!Makefile
+!.git*[a-z]
+!/.mailmap
+!/src/tools/hooks/[a-z]*[a-z]
+
+# Ignore these files
+*.min.*
+package-lock.json
