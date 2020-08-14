@@ -19,20 +19,15 @@ def setup(include: Optional[str] = None) -> None:
 	"""
 	checks.assert_is_root()
 
-	required_commands = ["git", "make", "python"]
+	required_commands = ["git", "make", "python", "pip"]
 	required_paths = []
-	required_python_packages = ["editorconfig-checker"]
 	commands = []
 
 	if include:
 		imported = runpy.run_path(include)
 		required_commands += imported.get("REQUIRED_COMMANDS", [])
 		required_paths += imported.get("REQUIRED_PATHS", [])
-		required_python_packages += imported.get("REQUIRED_PYTHON_PACKAGES", [])
 		commands += imported.get("COMMANDS", [])
-
-	if required_python_packages:
-		required_commands.append("pip")
 
 	for command in required_commands:
 		if shutil.which(command) is None:
@@ -40,11 +35,6 @@ def setup(include: Optional[str] = None) -> None:
 
 	for path in required_paths:
 		os.makedirs(path.replace("/", os.sep), exist_ok = True)
-
-	pip = "pip" if shutil.which("pip3") is None else "pip3"
-
-	for package in required_python_packages:
-		subprocess.run([pip, "install", package], capture_output = False, check = True, text = True)
 
 	for command in commands:
 		subprocess.run(command, capture_output = False, check = True, text = True)

@@ -1,5 +1,6 @@
 _TOOL_PATH=./src
 _PYTHON_COMMAND:=$(shell type -p python3 || echo python)
+_PIP_COMMAND:=$(shell type -p pip3 || echo pip)
 
 # See this file for more commands
 include ./src/config/Makefile
@@ -34,6 +35,7 @@ setup:
 	# Pull all submodules
 	git submodule update --init --recursive
 	@${_PYTHON_COMMAND} "${_TOOL_PATH}/setup.py" --include ./src/config/setup.py
+	@${_PIP_COMMAND} install --requirement ./src/config/requirements.txt
 	touch setup
 
 # Setup the project even if "make setup" already ran (force "make setup" to run)
