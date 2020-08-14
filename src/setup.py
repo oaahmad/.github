@@ -21,7 +21,6 @@ def setup(include: Optional[str] = None) -> None:
 
 	required_commands = ["git", "make", "python"]
 	required_paths = []
-	required_npm_packages = []
 	required_python_packages = ["editorconfig-checker"]
 	commands = []
 
@@ -29,13 +28,8 @@ def setup(include: Optional[str] = None) -> None:
 		imported = runpy.run_path(include)
 		required_commands += imported.get("REQUIRED_COMMANDS", [])
 		required_paths += imported.get("REQUIRED_PATHS", [])
-		required_npm_packages += imported.get("REQUIRED_NPM_PACKAGES", [])
 		required_python_packages += imported.get("REQUIRED_PYTHON_PACKAGES", [])
 		commands += imported.get("COMMANDS", [])
-
-	if required_npm_packages:
-		required_paths.append("node_modules")
-		required_commands.append("npm")
 
 	if required_python_packages:
 		required_commands.append("pip")
@@ -46,9 +40,6 @@ def setup(include: Optional[str] = None) -> None:
 
 	for path in required_paths:
 		os.makedirs(path.replace("/", os.sep), exist_ok = True)
-
-	for package in required_npm_packages:
-		subprocess.run(["npm", "install", package, "--no-fund", "--loglevel error"], capture_output = False, check = True, text = True)
 
 	pip = "pip" if shutil.which("pip3") is None else "pip3"
 
