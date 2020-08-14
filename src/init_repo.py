@@ -75,8 +75,9 @@ def init_repo() -> None:
 	with open(os.path.join("src", "config", "url.txt")) as f:
 		url = f.read().strip()
 
-	with open(os.path.join(tool_path, "src", "resources", "README.md")) as source, open("README.md", "w") as target:
-		target.write(source.read().replace("{{repo}}", repo_name).replace("{{url}}", url))
+	if not os.path.isfile("README.md"):
+		with open(os.path.join(tool_path, "src", "resources", "README.md")) as source, open("README.md", "w") as target:
+			target.write(source.read().replace("{{repo}}", repo_name).replace("{{url}}", url))
 
 	with open(os.path.join(tool_path, "Makefile")) as source, open("Makefile", "w") as target:
 		target.write(_GENERATED_COMMENT)
