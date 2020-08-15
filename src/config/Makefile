@@ -10,6 +10,10 @@ test: version test-gitignore test-tags
 lint: eclint
 	@echo '✓ lint success'
 
+# Run additional setup for the project
+.PHONY: extra-setup
+extra-setup:
+
 # Called by the pre-push hook
 .PHONY: pre-push
 pre-push: lint test

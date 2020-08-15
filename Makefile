@@ -37,6 +37,7 @@ setup:
 	@${_PYTHON_COMMAND} "${_TOOL_PATH}/setup.py" --include ./src/config/setup.py
 	@${_PIP_COMMAND} install --requirement ./src/config/requirements.txt
 	touch setup
+	make extra-setup
 
 # Setup the project even if "make setup" already ran (force "make setup" to run)
 .PHONY: reset
