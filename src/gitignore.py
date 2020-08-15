@@ -5,8 +5,8 @@ FILE_PATTERN = "[a-zA-Z]*[a-zA-Z]"
 
 ALLOW_DIRECTORIES = ["/.github"]
 IGNORE_DIRECTORIES = ["/build", "/builds", "/data", "/settings", "log", "logs", "node_modules", "temp", "temporary", "tmp"]
-ALLOW_EXTENSIONS = ["md", "txt", "sh", "py", "toml", "yml"]
-ALLOW_FILES = [".editorconfig", "Makefile", ".git*[a-z]", "/.mailmap", "/src/tools/hooks/[a-z]*[a-z]"]
+ALLOW_EXTENSIONS = ["md", "sh", "py", "toml", "yml"]
+ALLOW_FILES = [".editorconfig", "Makefile", ".git*[a-z]", "/.mailmap", "/src/tools/hooks/[a-z]*[a-z]", "requirements.txt", "url.txt"]
 IGNORE_FILES = ["*.min.*", "package-lock.json"]
 
 TEXT = """

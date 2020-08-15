@@ -26,7 +26,6 @@ tmp/
 
 # Allow files matching the following globs with the following extensions
 ![a-zA-Z]*[a-zA-Z].md
-![a-zA-Z]*[a-zA-Z].txt
 ![a-zA-Z]*[a-zA-Z].sh
 ![a-zA-Z]*[a-zA-Z].py
 ![a-zA-Z]*[a-zA-Z].toml
@@ -38,6 +37,8 @@ tmp/
 !.git*[a-z]
 !/.mailmap
 !/src/tools/hooks/[a-z]*[a-z]
+!requirements.txt
+!url.txt
 
 # Ignore these files
 *.min.*

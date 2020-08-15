@@ -25,7 +25,7 @@ def test_gitignore() -> None:
 	allowed_files = [".editorconfig", "Makefile", ".gitignore", ".gitattributes"]
 	allowed_root_files = [".mailmap"]
 	ignored_files = ["name", "a.min.md", "package-lock.json"]
-	allowed_extensions = ["md", "txt"]
+	allowed_extensions = ["md", "py"]
 	no_extension_paths = ["src/tools/hooks/"]
 
 	allowed_files += [f"{name}.{allowed_extensions[0]}" for name in allowed_file_names] + [f"{allowed_file_names[0]}.{extension}" for extension in allowed_extensions[1:]]
