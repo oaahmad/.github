@@ -127,7 +127,7 @@ Support these options:
 
 ## Tests and Contracts
 
-Run all automated tests before each release. Also, manually test additions and changes before release. When writing tests, always make them fail first to make sure they are working. When appropriate, write performance tests.
+Run all automated tests before each release. Also, manually test additions and changes before release. Test keyboard navigation. When writing tests, always make them fail first to make sure they are working. When appropriate, write performance tests.
 
 Consider the following for unit tests: [unittest](https://docs.python.org/3/library/unittest.html), [JUnit](https://junit.org), [Google Test](https://github.com/google/googletest), [Jest](https://jestjs.io), [munit](https://github.com/massiveinteractive/MassiveUnit). For web projects, consider [Selenium](https://selenium.dev) for integration and system testing.
 
