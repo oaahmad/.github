@@ -5,9 +5,7 @@ on:
   push:
     branches: [master]
   pull_request:
-    types: [opened, edited, ready_for_review, review_requested]
-  pull_request_review:
-    types: [submitted, edited]
+    types: [opened, edited]
   schedule:
     # Every two months on the 1st at midnight (UTC)
     - cron: '0 0 1 */2 *'
