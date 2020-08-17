@@ -1,6 +1,6 @@
 _TOOL_PATH=./src
-_PYTHON_COMMAND:=$(shell type -p python3 || echo python)
-_PIP_COMMAND:=$(shell type -p pip3 || echo pip)
+_PYTHON_COMMAND:=$(shell command -v python3 || echo python)
+_PIP_COMMAND:=$(shell command -v pip3 || echo pip)
 
 # See this file for more commands
 include ./src/config/Makefile
@@ -32,6 +32,7 @@ fetch:
 
 # Setup the project, and check if requirements are installed (run after cloning)
 setup:
+	make fetch
 	# Pull all submodules
 	git submodule update --init --recursive
 	@${_PYTHON_COMMAND} "${_TOOL_PATH}/setup.py" --include ./src/config/setup.py
