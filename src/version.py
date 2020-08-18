@@ -8,6 +8,9 @@ import argparse, re, subprocess, sys
 from typing import Optional
 import checks
 
+# Regex from https://semver.org#is-there-a-suggested-regular-expression-regex-to-check-a-semver-string
+SEMVER_REGEX = r"^(?P<major>0|[1-9]\d*)\.(?P<minor>0|[1-9]\d*)\.(?P<patch>0|[1-9]\d*)(?:-(?P<prerelease>(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+(?P<buildmetadata>[0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$"
+
 def get_version(prefix: Optional[str] = None, semver: bool = False, default: str = "0.0.0") -> str:
 	"""
 	Return the version of the current commit using git tags.
@@ -61,8 +64,7 @@ def get_version(prefix: Optional[str] = None, semver: bool = False, default: str
 
 		version += "+" + ".".join(metadata)
 
-	# Regex from https://semver.org#is-there-a-suggested-regular-expression-regex-to-check-a-semver-string
-	if semver and not re.match(r"^(?P<major>0|[1-9]\d*)\.(?P<minor>0|[1-9]\d*)\.(?P<patch>0|[1-9]\d*)(?:-(?P<prerelease>(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+(?P<buildmetadata>[0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$", version):
+	if semver and not re.match(SEMVER_REGEX, version):
 		raise Exception(f"{version} is not a valid Semantic Versioning 2.0 string")
 
 	return version

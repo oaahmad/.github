@@ -6,7 +6,7 @@ Test the formatting of git tags.
 
 import argparse, re, subprocess
 from typing import Optional, Iterable
-import checks
+import checks, version
 
 def test_tags(prefix: Optional[str] = None, semver: bool = False, no_metadata: bool = False, labels: Optional[Iterable[str]] = None, label_number: bool = False) -> None:
 	"""
@@ -39,9 +39,7 @@ def test_tags(prefix: Optional[str] = None, semver: bool = False, no_metadata: b
 
 		if semver:
 			tag = tag.lstrip(prefix)
-
-			# Regex from https://semver.org#is-there-a-suggested-regular-expression-regex-to-check-a-semver-string
-			match = re.match(r"^(?P<major>0|[1-9]\d*)\.(?P<minor>0|[1-9]\d*)\.(?P<patch>0|[1-9]\d*)(?:-(?P<prerelease>(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+(?P<buildmetadata>[0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$", tag)
+			match = re.match(version.SEMVER_REGEX, tag)
 
 			if not match:
 				raise Exception(f"{tag} is not a valid Semantic Versioning 2.0 string")
