@@ -19,6 +19,7 @@ def test_tags(prefix: Optional[str] = None, semver: bool = False, no_metadata: b
 	:param label_number: Ensure tags with labels have associated numbers (ignored if semver is `False`).
 	:raise Exception: A tag is invalid.
 	:raise subprocess.CalledProcessError: Failed to get tags.
+	:raise AssertionError: The current working directory is not the root of a git repository.
 	"""
 	checks.assert_is_root()
 

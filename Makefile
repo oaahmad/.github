@@ -49,10 +49,15 @@ reset:
 # Initialize the repository (run after changing config/)
 .PHONY: init
 init:
-	${_PYTHON_COMMAND} "${_TOOL_PATH}/init_repo.py"
+	@${_PYTHON_COMMAND} "${_TOOL_PATH}/init_repo.py"
 	make reset
 	# Update each submodule to the latest commit
 	git submodule update --remote --merge
+
+# Make a changelog file
+.PHONY: changelog
+changelog:
+	@${_PYTHON_COMMAND} "${_TOOL_PATH}/make_changelog.py" --prefix v --file-name 'CHANGELOG.md'
 
 # You shouldn't need this (this initializes and pushes the repository after it is created)
 .PHONY: first-init
