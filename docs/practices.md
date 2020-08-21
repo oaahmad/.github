@@ -141,4 +141,4 @@ Minify and unify CSS files. Minify and unify JavaScript files with Google's [Clo
 
 ## General
 
-Use [garbage collection](https://hboehm.info/gc), or [smart pointers](https://www.boost.org/doc/libs/1_71_0/libs/smart_ptr/doc/html/smart_ptr.html). Use object-oriented programming (except maybe for small scripts that will not be used as libraries).
+When possible, support undoing actions. Use [garbage collection](https://hboehm.info/gc), or [smart pointers](https://www.boost.org/doc/libs/1_71_0/libs/smart_ptr/doc/html/smart_ptr.html). Use object-oriented programming (except maybe for small scripts that will not be used as libraries).
